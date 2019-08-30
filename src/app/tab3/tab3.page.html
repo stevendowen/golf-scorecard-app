@@ -1,15 +1,39 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Scorecard
       {{ course }}
+      Scorecard
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>{{ courseData?.data?.name }}</ion-item>
-  </ion-list>
+  <ion-card *ngIf="courseData">
+    <ion-card-header>
+      <ion-card-title>{{ courseData.data.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle>
+        {{ courseData.data.addr1 }} -
+        {{ courseData.data.city }},
+        {{ courseData.data.stateOrProvince }}
+        {{ courseData.data.zipCode }}
+      </ion-card-subtitle>
+      <ion-card-subtitle>{{ courseData.data.phone }}</ion-card-subtitle>
+      <ion-card-subtitle>{{ courseData.data.website }}</ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+  <ion-item *ngIf="courseData">
+    <ion-row style="margin-right: 10px">Players</ion-row>
+    <ion-grid *ngFor="let holes of courseData.data.holes | slice: 0:9">
+      <ion-row>{{ holes.hole }}</ion-row>
+    </ion-grid>
+    <ion-row style="margin-right: 10px">Out</ion-row>
+    <ion-grid *ngFor="let holes of courseData.data.holes | slice: 9: 18">
+      <ion-row>{{ holes.hole }}</ion-row>
+    </ion-grid>
+    <ion-row style="margin-right: 10px">In</ion-row>
+    <ion-row>Total</ion-row>
+  </ion-item>
     <ion-button (click)="itemTapped()">Back</ion-button>
 </ion-content>

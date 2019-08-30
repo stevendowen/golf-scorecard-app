@@ -7,8 +7,14 @@
 </ion-header>
 
 <ion-content>
-  {{player$ | async | json }}
+
   <ion-item *ngFor="let player of player$ | async">
     <ion-title>{{ player.name }}</ion-title>
   </ion-item>
+  <ion-item>
+    <ion-label>Player Name</ion-label>
+    <ion-input placeholder="Player Name" [formControl]="newPlayerCtrl"></ion-input>
+    <ion-button (click)="savePlayer()">Add</ion-button>
+  </ion-item>
+  {{ player$ | async | json }}
 </ion-content>

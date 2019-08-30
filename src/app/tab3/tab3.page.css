@@ -1,3 +1,15 @@
+ion-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+ion-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 /*# sourceMappingURL=tab3.page.css.map */

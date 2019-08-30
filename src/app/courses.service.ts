@@ -48,4 +48,10 @@ export class CoursesService {
             })
         );
   }
+
+  savePlayer(player: Player) {
+    this.playersCollection.add(player)
+        .then(_ => console.log('add successful'))
+        .catch(error => console.log('add', error));
+  }
 }
