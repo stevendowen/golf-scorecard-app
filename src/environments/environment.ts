@@ -5,6 +5,15 @@
 export const environment = {
   production: false,
   courseUrl: 'https://golf-courses-api.herokuapp.com/courses',
+  firebase: {
+    apiKey: 'AIzaSyDdKr88t67AHihaekaVLddHXLVcFCdZMp8',
+    authDomain: 'golf-scorecard-app-733da.firebaseapp.com',
+    databaseURL: 'https://golf-scorecard-app-733da.firebaseio.com',
+    projectId: 'golf-scorecard-app-733da',
+    storageBucket: 'golf-scorecard-app-733da.appspot.com',
+    messagingSenderId: '439616814226',
+    appId: '1:439616814226:web:49db369c1ee0eb05',
+  }
 };
 
 /*

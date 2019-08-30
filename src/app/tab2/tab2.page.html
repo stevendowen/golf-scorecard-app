@@ -6,4 +6,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  {{player$ | async | json }}
+  <ion-item *ngFor="let player of player$ | async">
+    <ion-title>{{ player.name }}</ion-title>
+  </ion-item>
+</ion-content>

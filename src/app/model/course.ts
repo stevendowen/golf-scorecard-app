@@ -24,5 +24,5 @@ export interface Course {
     links: {};
     href: string;
     type: string;
-    image: string;
+    image?: string;
 }

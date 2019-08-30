@@ -2,8 +2,14 @@
   <ion-toolbar>
     <ion-title>
       Scorecard
+      {{ course }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-list>
+    <ion-item>{{ courseData?.data?.name }}</ion-item>
+  </ion-list>
+    <ion-button (click)="itemTapped()">Back</ion-button>
+</ion-content>
