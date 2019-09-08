@@ -8,8 +8,8 @@
 
 <ion-content>
 
-  <ion-item *ngFor="let player of player$ | async">
-    <ion-title>{{ player.name }}</ion-title>
+  <ion-item *ngFor="let player of player$ | async let p = index">
+    <ion-title id="{{p}}">{{ player.name }}</ion-title>
   </ion-item>
   <ion-item>
     <ion-label>Player Name</ion-label>

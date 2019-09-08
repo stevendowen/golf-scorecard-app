@@ -7,6 +7,7 @@ import {Courses} from './model/courses';
 import {map} from 'rxjs/operators';
 import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from '@angular/fire/firestore';
 import {Player} from './model/player';
+import {Score} from './model/score';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,9 @@ export class CoursesService {
             map((players: DocumentChangeAction<Player>[]): Player[] => {
               return players.map((player: DocumentChangeAction<Player>): Player => {
                 return {
+                  id: player.payload.doc.id,
                   name: player.payload.doc.data().name,
-                  score: player.payload.doc.data().score,
+                  scores: player.payload.doc.data().scores,
                 };
               });
             })
@@ -53,5 +55,13 @@ export class CoursesService {
     this.playersCollection.add(player)
         .then(_ => console.log('add successful'))
         .catch(error => console.log('add', error));
+  }
+
+  addScore(player: Player, updatedScore: number) {
+    console.log(player.scores);
+    this.playersCollection.doc(player.id).update({scores: updatedScore})
+        .then(_ => console.log('success'))
+        .catch(error => console.log('failed', error));
+
   }
 }

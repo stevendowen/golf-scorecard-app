@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
       HttpClientModule,
       AngularFireModule.initializeApp(environment.firebase),
       AngularFirestoreModule,
+      FormsModule,
   ],
   providers: [
     StatusBar,

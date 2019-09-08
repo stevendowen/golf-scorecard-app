@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngIf="courseData">
+<ion-content *ngIf="courseData">
+  <ion-card>
     <ion-card-header>
       <ion-card-title>{{ courseData.data.name }}</ion-card-title>
     </ion-card-header>
@@ -23,7 +23,7 @@
       <ion-card-subtitle>{{ courseData.data.website }}</ion-card-subtitle>
     </ion-card-content>
   </ion-card>
-  <ion-item *ngIf="courseData">
+  <ion-item>
     <ion-row style="margin-right: 10px">Players</ion-row>
     <ion-grid *ngFor="let holes of courseData.data.holes | slice: 0:9">
       <ion-row>{{ holes.hole }}</ion-row>
@@ -35,5 +35,18 @@
     <ion-row style="margin-right: 10px">In</ion-row>
     <ion-row>Total</ion-row>
   </ion-item>
+  <ion-item *ngFor="let player of player$ | async; let p = index">
+    <ion-row id="p{{p}}" style="width: 70px">{{ player.name }}</ion-row>
+    <ion-grid *ngFor=" let h = index; let holes of courseData.data.holes | slice: 0: 9">
+      <ion-input id="p{{p}}h{{h}}" placeholder="{{holes.hole}}" [formControl]="newScoreCtrl" (ionBlur)="saveScore(player)"></ion-input>
+    </ion-grid>
+    <ion-row style="margin-right: 10px">Out</ion-row>
+    <ion-grid *ngFor=" let h = index; let holes of courseData.data.holes | slice: 9: 18">
+      <ion-input id="p{{p}}h{{h + 9}}" placeholder="{{holes.hole}}" [formControl]="newScoreCtrl" (ionBlur)="saveScore(player)"></ion-input>
+    </ion-grid>
+    <ion-row style="margin-right: 10px">In</ion-row>
+    <ion-row>Total</ion-row>
+  </ion-item>
     <ion-button (click)="itemTapped()">Back</ion-button>
+  {{ newScoreCtrl.value | json }}
 </ion-content>
